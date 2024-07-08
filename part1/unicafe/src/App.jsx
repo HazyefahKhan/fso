@@ -1,9 +1,13 @@
 import { useState } from 'react'
 
-const FeedbackHeader = () => <h1>give feedback</h1>
-const FeedbackButton = (props) => <button onClick={props.onClick}>{props.text}</button>
-const StatisticHeader = () => <h1>Statistics</h1>
-const StatisticLine = (props) => <tr><td>{props.feedback}</td><td>{props.value}</td></tr>
+const FeedbackHeader = () => <h1>give feedback</h1> // No component needed for simple header
+const FeedbackButton = (props) => <button onClick={props.onClick}>{props.text}</button> // No component needed for simple button
+const StatisticHeader = () => <h1>Statistics</h1> // No component needed for simple header
+
+// Better to use multipole lines for readability
+// Can pass props in as exact names ({ feedback, value})
+const StatisticLine = (props) => <tr><td>{props.feedback}</td><td>{props.value}</td></tr> // Better to use multipole lines for readability
+// Can pass props in as exact names ({good, neutral, bad}})
 const Statistics = (props) => {
   if (props.all === 0) {
     return (
@@ -30,9 +34,9 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  const [all, setAll] = useState(0)
-  const [average, setAverage] = useState(0)
-  const [positive, setPositive] = useState(0)
+  const [all, setAll] = useState(0) // No separate state needed for dervied value
+  const [average, setAverage] = useState(0) // No separate state needed for dervied value
+  const [positive, setPositive] = useState(0) // No separate state needed for dervied value
 
   const handleGoodClick = () => {
     let updatedGood = good + 1
@@ -63,11 +67,12 @@ const App = () => {
 
   return (
     <div>
-      <FeedbackHeader />
-      <FeedbackButton onClick={handleGoodClick} text="good" />
+      <FeedbackHeader /> // No component needed for simple header
+      <FeedbackButton onClick={handleGoodClick} text="good" /> 
       <FeedbackButton onClick={handleNeutralClick} text="neutral" />
       <FeedbackButton onClick={handleBadClick} text="bad" />
-      <StatisticHeader/>
+      <StatisticHeader/> 
+      <FeedbackHeader /> // No component needed for simple header
       <Statistics good={good} bad={bad} neutral={neutral} all={all} average={average} positive={positive}/>
     </div>
   )

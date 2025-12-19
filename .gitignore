@@ -2,3 +2,6 @@
 /part2/example
 /notes-backend
 /notes-frontend
+.env
+/part3/phonebook-backend/.env
+/part3/phonebook-backend/.env
